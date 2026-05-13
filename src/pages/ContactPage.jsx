@@ -1,4 +1,5 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useLocation, useSearchParams } from "react-router-dom";
 import emailjs from "@emailjs/browser";
 import { COLORS } from "../constants/colors.js";
 import { SERVICES_DATA } from "../data/servicesData.js";
@@ -22,7 +23,28 @@ const mapsDirectionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${
 
 export function ContactPage() {
   const formRef = useRef(null);
+  const location = useLocation();
+  const [searchParams] = useSearchParams();
   const [status, setStatus] = useState({ type: "idle", message: "" });
+  const [leadServices, setLeadServices] = useState("");
+
+  useEffect(() => {
+    const id = searchParams.get("service");
+    if (!id) return;
+    const svc = SERVICES_DATA.find((s) => s.id === id);
+    if (svc) setLeadServices(svc.title);
+  }, [searchParams]);
+
+  useEffect(() => {
+    if (location.pathname !== "/contact") return;
+    const hash = location.hash.replace(/^#/, "");
+    const hasService = Boolean(searchParams.get("service"));
+    if (hash !== "contact-form" && !hasService) return;
+    const t = window.setTimeout(() => {
+      document.getElementById("contact-form")?.scrollIntoView({ behavior: "smooth" });
+    }, 100);
+    return () => window.clearTimeout(t);
+  }, [location.pathname, location.hash, searchParams]);
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -67,6 +89,7 @@ export function ContactPage() {
       .then(
         () => {
           form.reset();
+          setLeadServices("");
           setStatus({
             type: "success",
             message: "Thank you — your message has been sent. We will reply shortly.",
@@ -146,7 +169,7 @@ export function ContactPage() {
         </div>
       </section>
 
-      <section className="dw-contact-form-section">
+      <section id="contact-form" className="dw-contact-form-section">
         <div className="dw-contact-form-inner">
           <div className="dw-contact-info">
             <span className="dw-section-badge">Get In Touch</span>
@@ -253,7 +276,11 @@ export function ContactPage() {
                   placeholder="Phone Number"
                   autoComplete="tel"
                 />
-                <select name="lead_services" defaultValue="">
+                <select
+                  name="lead_services"
+                  value={leadServices}
+                  onChange={(e) => setLeadServices(e.target.value)}
+                >
                   <option value="" disabled>
                     Select a Service
                   </option>

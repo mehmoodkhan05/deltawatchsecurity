@@ -56,7 +56,15 @@ export function ServicesPage() {
                     </span>
                   ))}
                 </div>
-                <button type="button" className="dw-btn-coral" onClick={() => go("/contact")}>
+                <button
+                  type="button"
+                  className="dw-btn-coral"
+                  onClick={() =>
+                    go(`/contact?service=${encodeURIComponent(s.id)}#contact-form`, {
+                      scrollToTop: false,
+                    })
+                  }
+                >
                   Enquire Now
                 </button>
               </div>
