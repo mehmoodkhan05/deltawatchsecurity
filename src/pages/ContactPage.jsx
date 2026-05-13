@@ -17,11 +17,13 @@ export function ContactPage() {
   return (
     <>
       <section className="dw-contact-hero">
-        <span className="dw-section-badge" style={{ background: "rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.65)", display: "inline-block", marginBottom: 14 }}>
-          Contact Us
-        </span>
-        <h1>Let&apos;s talk about your security</h1>
-        <p>Our consultants are ready to assess your requirements and design a bespoke security solution. Get in touch — we typically respond within 2 hours.</p>
+        <div className="dw-contact-hero-inner">
+          <span className="dw-section-badge" style={{ background: "rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.65)", display: "inline-block", marginBottom: 14 }}>
+            Contact Us
+          </span>
+          <h1>Let&apos;s talk about your security</h1>
+          <p>Our consultants are ready to assess your requirements and design a bespoke security solution. Get in touch — we typically respond within 2 hours.</p>
+        </div>
       </section>
 
       <section className="dw-contact-cards">

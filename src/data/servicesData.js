@@ -1,3 +1,10 @@
+import imgMannedGuarding from "../../assets/services/manned-guarding.jpg";
+import imgConstructionSecurity from "../../assets/services/construction-security.jpg";
+import imgIntegratedSecurity from "../../assets/services/integrated-security.jpg";
+import imgKeyHolding from "../../assets/services/key-holding.jpg";
+import imgCleaningServices from "../../assets/services/cleaning-services.jpg";
+import imgFireMarshal from "../../assets/services/fire-marshal.jpg";
+
 export const SERVICES_DATA = [
   {
     id: "manned-guarding",
@@ -9,6 +16,7 @@ export const SERVICES_DATA = [
     features: ["SIA Licensed", "24/7 Coverage", "CRB Checked", "Uniformed Officers"],
     icon: "🛡️",
     tag: "SIA Licensed",
+    image: imgMannedGuarding,
   },
   {
     id: "construction-security",
@@ -20,6 +28,7 @@ export const SERVICES_DATA = [
     features: ["Access Control", "Mobile Patrols", "CCTV Integration", "Night Watch"],
     icon: "🏗️",
     tag: "Site Specialist",
+    image: imgConstructionSecurity,
   },
   {
     id: "integrated-security",
@@ -31,6 +40,7 @@ export const SERVICES_DATA = [
     features: ["CCTV Systems", "Access Control", "Remote Monitoring", "Smart Alerts"],
     icon: "📡",
     tag: "Tech-Forward",
+    image: imgIntegratedSecurity,
   },
   {
     id: "key-holding",
@@ -42,6 +52,7 @@ export const SERVICES_DATA = [
     features: ["Rapid Response", "Police Liaison", "Alarm Verification", "24/7 Response"],
     icon: "🔑",
     tag: "Rapid Response",
+    image: imgKeyHolding,
   },
   {
     id: "cleaning-services",
@@ -53,6 +64,7 @@ export const SERVICES_DATA = [
     features: ["Commercial Clean", "Deep Sanitation", "Post-Build Clean", "Eco Products"],
     icon: "✨",
     tag: "Premium Clean",
+    image: imgCleaningServices,
   },
   {
     id: "fire-marshal",
@@ -64,5 +76,6 @@ export const SERVICES_DATA = [
     features: ["Fully Certificated", "Evacuation Plans", "Risk Assessment", "Event Cover"],
     icon: "🔥",
     tag: "Certified",
+    image: imgFireMarshal,
   },
 ];

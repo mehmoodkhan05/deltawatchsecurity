@@ -1,6 +1,7 @@
 import { COLORS } from "../constants/colors.js";
 import { Counter } from "../components/Counter.jsx";
 import { useSiteNavigate } from "../hooks/useSiteNavigate.js";
+import heroSectionLogo from "../../assets/heroSection.png";
 
 export function HomePage() {
   const go = useSiteNavigate();
@@ -62,21 +63,12 @@ export function HomePage() {
           </div>
           <div className="dw-hero-visual">
             <div className="dw-hero-card-main">
-              <svg className="dw-shield-svg" viewBox="0 0 280 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M140 20L40 60V140C40 200 90 250 140 275C190 250 240 200 240 140V60L140 20Z" fill="rgba(43,99,241,0.15)" stroke="rgba(43,99,241,0.4)" strokeWidth="2" />
-                <path d="M140 50L70 78V140C70 185 105 220 140 238C175 220 210 185 210 140V78L140 50Z" fill="rgba(43,99,241,0.1)" stroke="rgba(43,99,241,0.25)" strokeWidth="1.5" />
-                <text x="140" y="170" textAnchor="middle" fontSize="70" fill="rgba(43,99,241,0.8)">
-                  Δ
-                </text>
-                <circle cx="140" cy="150" r="55" stroke="rgba(255,122,89,0.3)" strokeWidth="1" fill="none" strokeDasharray="4 4" />
-                <circle cx="140" cy="150" r="75" stroke="rgba(43,99,241,0.15)" strokeWidth="1" fill="none" />
-                {[0, 60, 120, 180, 240, 300].map((angle, i) => {
-                  const r = 75;
-                  const cx = 140 + r * Math.cos((angle * Math.PI) / 180);
-                  const cy = 150 + r * Math.sin((angle * Math.PI) / 180);
-                  return <circle key={i} cx={cx} cy={cy} r="3" fill="rgba(43,99,241,0.5)" />;
-                })}
-              </svg>
+              <img
+                src={heroSectionLogo}
+                alt=""
+                className="dw-hero-section-logo"
+                decoding="async"
+              />
               <div style={{ textAlign: "center", marginTop: 10 }}>
                 <div style={{ color: "rgba(255,255,255,0.8)", fontSize: 16, fontWeight: 700 }}>Active Protection</div>
                 <div style={{ color: "rgba(255,255,255,0.4)", fontSize: 12, marginTop: 4 }}>24/7 Monitoring Active</div>

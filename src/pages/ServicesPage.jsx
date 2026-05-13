@@ -34,9 +34,12 @@ export function ServicesPage() {
             <div className="dw-service-inner" style={i % 2 !== 0 ? { direction: "rtl" } : {}}>
               <div style={i % 2 !== 0 ? { direction: "ltr" } : {}}>
                 <div className="dw-service-visual">
+                  <img className="dw-service-visual-img" src={s.image} alt={s.title} loading="lazy" decoding="async" />
                   <div className="dw-service-num">0{i + 1}</div>
                   <div className="dw-service-visual-content">
-                    <div className="dw-service-visual-icon">{s.icon}</div>
+                    <div className="dw-service-visual-icon" aria-hidden>
+                      {s.icon}
+                    </div>
                     <div className="dw-service-visual-label">{s.title}</div>
                   </div>
                   <div className="dw-service-tag">{s.tag}</div>

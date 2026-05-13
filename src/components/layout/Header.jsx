@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { SERVICES_DATA } from "../../data/servicesData.js";
 import { useScrolled } from "../../hooks/useScrolled.js";
+import { useNavSurfaceLight } from "../../hooks/useNavSurfaceLight.js";
 import { Logo } from "./Logo.jsx";
 
 function pathToNavKey(pathname) {
@@ -11,6 +12,7 @@ function pathToNavKey(pathname) {
 
 export function Header() {
   const scrolled = useScrolled();
+  const navLight = useNavSurfaceLight();
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
@@ -33,8 +35,8 @@ export function Header() {
 
   return (
     <>
-      <nav className={`dw-nav${scrolled ? " scrolled" : ""}`}>
-        <Logo onClick={() => go("/")} />
+      <nav className={`dw-nav${scrolled ? " scrolled" : ""}${navLight ? " dw-nav--light" : ""}`}>
+        <Logo onClick={() => go("/")} onLightSurface={navLight} />
         <div className="dw-nav-links">
           {["home", "about", "services", "contact"].map((p) =>
             p === "services" ? (
@@ -70,11 +72,6 @@ export function Header() {
               </button>
             )
           )}
-        </div>
-        <div className="dw-nav-right" style={{ display: "flex" }}>
-          <button type="button" className="dw-btn-primary" onClick={() => go("/contact")}>
-            Get Started
-          </button>
         </div>
         <button
           type="button"
@@ -114,9 +111,6 @@ export function Header() {
             ))}
           </>
         )}
-        <button type="button" className="dw-btn-primary" style={{ marginTop: 8 }} onClick={() => go("/contact")}>
-          Get Started
-        </button>
       </div>
     </>
   );

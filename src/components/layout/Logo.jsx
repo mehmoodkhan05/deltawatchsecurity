@@ -1,11 +1,15 @@
-export function Logo({ onClick }) {
+import logoImg from "../../../assets/logo-1.png";
+import logoMark from "../../../assets/favicon.png";
+
+export function Logo({ onClick, onLightSurface = false }) {
   return (
-    <div className="dw-nav-logo" onClick={onClick} role="presentation">
-      <div className="dw-logo-icon">Δ</div>
-      <div>
-        <div className="dw-logo-text">Delta Watch</div>
-        <div className="dw-logo-sub">Security</div>
-      </div>
-    </div>
+    <button type="button" className="dw-nav-logo" onClick={onClick} aria-label="Delta Watch Security — Home">
+      <img
+        src={onLightSurface ? logoMark : logoImg}
+        alt=""
+        className={`dw-logo-image${onLightSurface ? " dw-logo-image--for-light-nav" : ""}`}
+        decoding="async"
+      />
+    </button>
   );
 }
